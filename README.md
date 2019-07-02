@@ -6,6 +6,8 @@ This project allow you to sync your measurments between Withings scale and Garmi
 
 ## Installation
 
+Create and inser your credentials to config/garmin_pwd file.
+
 ## Initial run
 
 ## Automated sync

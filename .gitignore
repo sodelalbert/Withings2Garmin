@@ -3,3 +3,4 @@
 __pycache__
 .idea
 config/garmin_pwd
+venv

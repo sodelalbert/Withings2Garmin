@@ -1,0 +1,5 @@
+.DS_Store
+*.pyc
+__pycache__
+.idea
+config/garmin_pwd

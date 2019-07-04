@@ -2,5 +2,6 @@
 *.pyc
 __pycache__
 .idea
-config/garmin_pwd
+config/secret.json
 venv
+test.fit

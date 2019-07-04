@@ -1,6 +1,6 @@
 # Withings2Garmin
 
-This project allow you to sync your measurments between Withings scale and Garmin Connect to have unified expirience there. 
+This project allow you to sync your measurments between Withings scale and Garmin Connect to have unified expirience.
 
 ## Preconditions
 

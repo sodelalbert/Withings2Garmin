@@ -70,11 +70,13 @@ Fit file uploaded to Garmin Connect
 
 ## Automated sync
 
-Now you can utilize crontab as scheduler of script runs. It will allow to synchronize your measurements and you can forget about the script.  
+Now you can utilize crontab as scheduler of script runs. It will allow to synchronize your measurements and you can forget about the script.
 
-'''
+Execute ```crontab -e```
+
+```
 */2 * * * * "cd /home/pi/Withings2Garmin; ./sync.py"
-'''
+```
 
 ## References
 

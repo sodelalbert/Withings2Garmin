@@ -75,7 +75,7 @@ Now you can utilize crontab as scheduler of script runs. It will allow to synchr
 Execute ```crontab -e```
 
 ```
-/home/pi/Withings2Garmin/run.sh >> /home/pi/cron.log 2>&1
+ */5 * * * * /home/pi/Withings2Garmin/run.sh >> /home/pi/cron.log 2>&1
 ```
 
 ## References

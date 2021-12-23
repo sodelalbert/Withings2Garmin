@@ -146,8 +146,8 @@ class GarminConnect(object):
         try:
             dashboard = session.get("http://connect.garmin.com/modern")
 
-            userdata_json_str = re.search(r"VIEWER_SOCIAL_PROFILE\s*=\s*JSON\.parse\((.+)\);$", dashboard.text, re.MULTILINE).group(1)
-            userdata = json.loads(json.loads(userdata_json_str))
+            userdata_json_str = re.search(r"VIEWER_SOCIAL_PROFILE\s*=\s*(.+);$", dashboard.text, re.MULTILINE).group(1)
+            userdata = json.loads(userdata_json_str)
             username = userdata["displayName"]
 
             print(username)

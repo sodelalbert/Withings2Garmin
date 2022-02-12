@@ -1,8 +1,0 @@
-.DS_Store
-*.pyc
-__pycache__
-.idea
-config/secret.json
-config
-venv
-test.fit

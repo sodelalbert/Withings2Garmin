@@ -13,10 +13,17 @@ import json
 class LoginSucceeded(Exception):
     pass
 
-
 class LoginFailed(Exception):
     pass
 
+class APIException(Exception):
+    pass
+
+class UserException(Exception):
+    pass
+
+class UserExceptionType:
+    pass
 
 class GarminConnect(object):
     LOGIN_URL = 'https://connect.garmin.com/signin'

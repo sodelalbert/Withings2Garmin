@@ -36,7 +36,7 @@ class DateOption(Option):
 
 
 def main():
-	with open('config/secret.json') as secret_file:
+	with open('/volume2/scripts/Withings2Garmin/config/secret.json') as secret_file:
 		secret = json.load(secret_file)
 		GARMIN_USERNAME = secret["user"]
 		GARMIN_PASSWORD = secret["password"]
@@ -45,7 +45,7 @@ def main():
 	p = OptionParser(usage=usage, option_class=DateOption)
 	p.add_option('--garmin-username', '--gu',  default=GARMIN_USERNAME, type='string', metavar='<user>', help='username to login Garmin Connect.')
 	p.add_option('--garmin-password', '--gp', default=GARMIN_PASSWORD, type='string', metavar='<pass>', help='password to login Garmin Connect.')
-	p.add_option('-f', '--fromdate', type='date', default="2000-01-01", metavar='<date>')
+	p.add_option('-f', '--fromdate', type='date', default=date.today(), metavar='<date>')
 	p.add_option('-t', '--todate', type='date', default=date.today(), metavar='<date>')
 	p.add_option('--no-upload', action='store_true', help="Won't upload to Garmin Connect and output binary-strings to "
 														  "stdout.")

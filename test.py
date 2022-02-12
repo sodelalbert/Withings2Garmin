@@ -12,7 +12,7 @@ import time
 
 class Withings():
 	AUTHORIZE_URL = 'https://account.withings.com/oauth2_user/authorize2'
-	TOKEN_URL = 'https://account.withings.com/oauth2/token'
+	TOKEN_URL = 'https://wbsapi.withings.net/v2/oauth2'
 	GETMEAS_URL = 'https://wbsapi.withings.net/measure?action=getmeas'
 	APP_CONFIG = 'config/withings_app.json'
 	USER_CONFIG = 'config/withings_user.json'
@@ -79,6 +79,7 @@ class WitingsOAuth2(Withings):
 
 	def getAuthenticationCode(self):
 		params = {
+			'action' : 'requesttoken',
 			"response_type" : "code",
 			"client_id" : self.app_config['client_id'],
 			"state" : "OK",
@@ -112,6 +113,7 @@ class WitingsOAuth2(Withings):
 		print("Get Access Token")
 
 		params = {
+			"action" : "requesttoken",
 			"grant_type" : "authorization_code",
 			"client_id" : self.app_config['client_id'],
 			"client_secret" : self.app_config['consumer_secret'],
@@ -145,6 +147,7 @@ class WitingsOAuth2(Withings):
 		print("Refresh Access Token")
 
 		params = {
+			"action" : "requesttoken",
 			"grant_type" : "refresh_token",
 			"client_id" : self.app_config['client_id'],
 			"client_secret" : self.app_config['consumer_secret'],

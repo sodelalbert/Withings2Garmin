@@ -83,7 +83,9 @@ class GarminConnect(object):
             raise APIException("SSO prestart error %s %s" % (preResp.status_code, preResp.text))
 
         ssoResp = session.post("https://sso.garmin.com/sso/login", params=params, data=data, allow_redirects=False, headers=headers)
+        print(ssoResp)
         if ssoResp.status_code != 200 or "temporarily unavailable" in ssoResp.text:
+            #print(ssoResp.text)
             raise APIException("SSO error %s %s" % (ssoResp.status_code, ssoResp.text))
 
         if ">sendEvent('FAIL')" in ssoResp.text:
@@ -140,19 +142,18 @@ class GarminConnect(object):
                 print("Key: " + key + ", " + value)
 
     def login(self, username, password):
-
+        print(username)
         session = self._get_session(email=username, password=password)
 
         try:
             dashboard = session.get("http://connect.garmin.com/modern")
+            #print('dashboard.text'+dashboard.text)
+            #userdata_json_str = re.search(r"VIEWER_SOCIAL_PROFILE\s*=\s*.*\(.*\);$", dashboard.text, re.MULTILINE).group(1)
+            userdata_json_str=re.search(r"VIEWER_SOCIAL_PROFILE\s*=\s*(.*);$", dashboard.text, re.MULTILINE).group(1)
+            userdata = json.loads(userdata_json_str)
+            username2 = userdata["displayName"]
 
-            userdata_json_str = re.search(r"VIEWER_SOCIAL_PROFILE\s*=\s*JSON\.parse\((.+)\);$", dashboard.text, re.MULTILINE).group(1)
-            userdata = json.loads(json.loads(userdata_json_str))
-            username = userdata["displayName"]
-
-            print(username)
-
-            sys.stderr.write('Garmin Connect User Name: ' + username + '\n')
+            sys.stderr.write('Garmin Connect User Name: ' + username2 + '\n')
 
         except Exception as e:
             print(e)

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo `date`
-cd /home/pi/Withings2Garmin;
-./sync.py
+fromdate=`date '+%Y-%m-%d'`
+/opt/bin/python ./sync.py -v --fromdate $fromdate
 
 echo "----------------------------------------"

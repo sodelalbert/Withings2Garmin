@@ -11,7 +11,7 @@ Clone repository from GitHub
 ```
 git clone https://github.com/sodelalbert/Withings2Garmin.git
 ```
-Inser your Garmin Connect password into file ``` config/secret.json``` in example:
+Insert your Garmin Connect password into file ``` config/secret.json``` as in example:
 
 ``` 
 {

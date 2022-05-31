@@ -12,7 +12,7 @@ import time
 
 class Withings():
 	AUTHORIZE_URL = 'https://account.withings.com/oauth2_user/authorize2'
-	TOKEN_URL = 'https://account.withings.com/oauth2/token'
+	TOKEN_URL = 'https://wbsapi.withings.net/v2/oauth2'
 	GETMEAS_URL = 'https://wbsapi.withings.net/measure?action=getmeas'
 	APP_CONFIG = 'config/withings_app.json'
 	USER_CONFIG = 'config/withings_user.json'
@@ -112,6 +112,7 @@ class WitingsOAuth2(Withings):
 		print("Get Access Token")
 
 		params = {
+			"action": "requesttoken",
 			"grant_type" : "authorization_code",
 			"client_id" : self.app_config['client_id'],
 			"client_secret" : self.app_config['consumer_secret'],
@@ -137,14 +138,15 @@ class WitingsOAuth2(Withings):
 			print()
 			print("If it's regarding an invalid code, try to start the script again to obtain a new link.")
 
-		self.user_config['access_token'] = accessToken.get('access_token')
-		self.user_config['refresh_token'] = accessToken.get('refresh_token')
-		self.user_config['userid'] = accessToken.get('userid')
+		self.user_config['access_token'] = accessToken.get('body').get('access_token')
+		self.user_config['refresh_token'] = accessToken.get('body').get('refresh_token')
+		self.user_config['userid'] = accessToken.get('body').get('userid')
 
 	def refreshAccessToken(self):
 		print("Refresh Access Token")
 
 		params = {
+			"action": "requesttoken",
 			"grant_type" : "refresh_token",
 			"client_id" : self.app_config['client_id'],
 			"client_secret" : self.app_config['consumer_secret'],
@@ -169,9 +171,9 @@ class WitingsOAuth2(Withings):
 			print()
 			print("If it's regarding an invalid code, try to start the script again to obtain a new link.")
 
-		self.user_config['access_token'] = accessToken.get('access_token')
-		self.user_config['refresh_token'] = accessToken.get('refresh_token')
-		self.user_config['userid'] = accessToken.get('userid')
+		self.user_config['access_token'] = accessToken.get('body').get('access_token')
+		self.user_config['refresh_token'] = accessToken.get('body').get('refresh_token')
+		self.user_config['userid'] = accessToken.get('body').get('userid')
 
 class WithingsAccount(Withings):
 	def __init__(self):

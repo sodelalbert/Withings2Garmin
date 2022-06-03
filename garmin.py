@@ -151,9 +151,9 @@ class GarminConnect(object):
             #userdata_json_str = re.search(r"VIEWER_SOCIAL_PROFILE\s*=\s*.*\(.*\);$", dashboard.text, re.MULTILINE).group(1)
             userdata_json_str=re.search(r"VIEWER_SOCIAL_PROFILE\s*=\s*(.*);$", dashboard.text, re.MULTILINE).group(1)
             userdata = json.loads(userdata_json_str)
-            username2 = userdata["displayName"]
+            username = userdata["displayName"]
 
-            sys.stderr.write('Garmin Connect User Name: ' + username2 + '\n')
+            sys.stderr.write('Garmin Connect User Name: ' + username + '\n')
 
         except Exception as e:
             print(e)

@@ -83,7 +83,6 @@ def sync(garmin_username, garmin_password, fromdate, todate, no_upload, verbose)
 
 	for group in groups:
 		# get extra physical measurements
-
 		dt = group.get_datetime()
 		weight = group.get_weight()
 		fat_ratio = group.get_fat_ratio()

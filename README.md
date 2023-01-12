@@ -52,7 +52,7 @@ https://account.withings.com/oauth2_user/authorize2?response_type=code&client_id
 Token :  
 ```
 
-Copy token from web page and copy into terminal and press Enter. Terminal output should look like this 
+Copy token from web page and copy into terminal and press Enter. Output should look like this 
 ```
 ❯ ./sync.py
 Can't read config file config/withings_user.json
@@ -77,29 +77,17 @@ Garmin Connect User Name: 3efa8d8-c9ed-40f4-98ec-21259ec6afc0
 Fit file uploaded to Garmin Connect
 ```
 
+Your measurements should be synchornized at this point ;) 
 
-## Automated sync
+## Manual synchronization
 
-Now you can utilize crontab as scheduler of script runs. It will allow to synchronize your measurements and you can forget about the script. In below exaple Raspberry Pi was used as server.
+Script sync.py allows to use command line arguments. By default it will synchronize your reporst starting from 2022-01-01 up to current date. 
 
-Execute ```crontab -e```
+```./sync```
 
-```
- */5 * * * * /home/pi/Withings2Garmin/run.sh >> /home/pi/cron.log 2>&1
-```
+If you would like to specidy manualy  range you can do it by executing following command.
 
-This approach allows simple loging to ```/home/pi/cron.log``` directory. 
-
-```
-Sun 12 Jan 2020 02:25:01 PM CET
-Garmin Connect User Name: 3e7cc8d8-c9fd-40f4-98ec-28539ec6afc0
-Withings: Refresh Access Token
-Withings: Get Measurements
-   Measurements received
-3e7cc8d8-c9ed-4ff4-98ec-28539ec6afc0
-Fit file uploaded to Garmin Connect
-----------------------------------------
-```
+```./sync -fromdate --fromdate 2022-01-01 --todate 2022-01-10```
 
 
 ## References

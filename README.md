@@ -11,12 +11,12 @@ Clone repository from GitHub
 ```
 git clone https://github.com/sodelalbert/Withings2Garmin.git
 ```
-Insert your Garmin Connect password into file ``` config/secret.json``` as in example:
+Insert your Garmin Connect password into file ``` sync.py``` as in example:
 
 ``` 
 {
-"user": "john.rambo@thepool.com",
-"password": "firstblood"
+"GARMIN_USERNAME": "john.rambo@thepool.com",
+"GARMIN_PASSWORD": "firstblood"
 }
 ``` 
 
@@ -28,9 +28,9 @@ Passwords are stored locally inside your host operating system. Make sure that t
 
 It's required to perform first run manually. During that you will need to chose user of of the scale and ``` config/withings_user.json``` will be created automatically for authorization purposes.
 
-Please add execution rights to ```run.sh```
+Please add execution rights to ```sync.py```
 ```
-chmod +x run.sh
+chmod +x sync.py
 ```
 
 Perform initial config.

@@ -28,10 +28,6 @@ Passwords are stored locally inside your host operating system. Make sure that t
 
 It's required to perform first run manually. During that you will need to chose user of of the scale and ``` config/withings_user.json``` will be created automatically for authorization purposes.
 
-Please add execution rights to ```run.sh```
-```
-chmod +x run.sh
-```
 
 Perform initial config.
 

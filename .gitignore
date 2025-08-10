@@ -1,8 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# uv
+.venv/
+
+# Environment variables
+.env
+
+# Authentication tokens and sessions
+.withings_tokens.json
+.garmin_session/
+
+# Output files
+*.json
+*.fit
+
+# Logs
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
-*.pyc
-__pycache__
-.idea
-config/secret.json
-config
-venv
-test.fit
+Thumbs.db

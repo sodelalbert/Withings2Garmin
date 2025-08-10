@@ -1,0 +1,33 @@
+[project]
+name = "Withings2Garmin"
+version = "1.0.0"
+description = "Simplified Withings to Garmin sync tool"
+authors = [
+    { name = "Albert Sodel", email = "sodelalbert@gmail.com" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+
+dependencies = [
+    "requests>=2.31.0",
+    "garth>=0.4.46",
+    # Development dependencies
+    "black>=25.1.0",
+    "mypy>=1.17.0",
+    "flake8-pyproject>=1.2.3",
+    "flake8-isort>=6.1.2",
+    "isort>=6.0.1",
+    "pytest>=8.4.1",
+    "types-requests>=2.32.4.20250611",
+]
+
+[tool.pylint]
+ignore = [".venv"]
+
+[tool.flake8]
+exclude = [".venv"]
+max-line-length = 88
+
+[tool.black]
+line-length = 88

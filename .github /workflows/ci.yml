@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  python-code-quality:
+    name: Python Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run isort
+        run: |
+          uv run isort . --check-only --diff
+        continue-on-error: false
+
+      - name: Run Black
+        run: |
+          uv run black . --check --diff
+        continue-on-error: false
+
+      - name: Run Flake8
+        run: |
+          uv run flake8 .
+        continue-on-error: false
+
+      - name: Run Mypy
+        run: |
+          uv run mypy .
+        continue-on-error: false
